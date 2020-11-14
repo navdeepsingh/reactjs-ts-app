@@ -3,8 +3,14 @@ import * as s from "../app.styles";
 import ErrorDetails from "./error-details";
 import {useGithubIssueComments} from "../api/github-events.api";
 
-const Results: React.FC = () => {
-  const { data, isLoading, isError, error } = useGithubIssueComments()
+type ResultsProps = {
+  inputs: Object;
+};
+
+const Results: React.FC<ResultsProps> = ({
+  inputs
+}) => {
+  const { data, isLoading, isError, error } = useGithubIssueComments(inputs)
 
   return(
     <>

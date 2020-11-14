@@ -3,8 +3,10 @@ import axios from "axios";
 import {useQuery} from "react-query";
 
 
-export function useGithubIssueComments(user: string = 'microsoft', repo: string = 'Typescript') {
-    const url = `https://api.github.com/repos/${user}/${repo}/events?per_page=100`;
+export function useGithubIssueComments(inputs: Object ) {
+    console.log(inputs);
+    
+    const url = `https://api.github.com/repos/${inputs}/${inputs}/events?per_page=100`;
 
     return useQuery<GithubIssue[], Error>(url, () =>
         axios.get(url).then((res) => mapResult(res.data))
@@ -19,7 +21,7 @@ export function mapResult(data: GithubEvent[]): GithubIssue[] {
     data = data.filter(result => result.type === 'IssueCommentEvent')
 
     //data.map(res => output.push(res.payload.issue.id))
-    console.log(data);
+    //console.log(data);
     // return (data);
     
     // TODO:

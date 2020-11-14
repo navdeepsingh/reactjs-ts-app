@@ -1,11 +1,8 @@
 import React from "react";
 import Button from "./ui/button";
-// import Input from "./ui/input";
 import * as s from "../app.styles";
-//import {useGithubIssueComments} from "../api/github-events.api";
 import {useFormSubmit} from "./hooks/use-form-submit";
-import {useGithubIssueComments} from "../api/github-events.api";
-import ErrorDetails from "../components/error-details";
+import Results from "./results";
 
 const Form: React.FC = () => 
 {  
@@ -38,6 +35,8 @@ const Form: React.FC = () =>
           type="submit"
         >Go fetch</Button>
       </s.form>
+
+      <Results inputs={inputs} />   
     </>
   )
 };

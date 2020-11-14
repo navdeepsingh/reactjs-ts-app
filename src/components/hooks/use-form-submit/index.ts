@@ -14,7 +14,7 @@ export const useFormSubmit = (): [
     if (event) {
       event.preventDefault();
     }
-    console.log('Call to API ' + inputs.user);
+    console.log('Call to API ' + inputs.user + ' ' + inputs.repo);
     //useGithubIssueComments(user, repo);
     return;
   }
