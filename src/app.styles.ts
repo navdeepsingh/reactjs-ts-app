@@ -16,9 +16,16 @@ export const header = styled.h1`
   margin-bottom: 32px;
 `;
 
-export const issuer_title = styled.div`
-  font-size: xx-large;
+export const issuer_title = styled.h1`
+  color: #00bab8;
+  font-size: 2.0em;
   margin-bottom: 32px;
+`;
+
+export const issuer_info = styled.div`
+  color: #d0d0d0;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 `;
 
 export const comment_body = styled.div`
@@ -56,4 +63,12 @@ export const button = styled.button`
   border: 1px solid #00bab8;
   border-radius: 10px;
   box-shadow: 3px 17px 39px -12px rgba(0,186,184,0.9);
+`;
+
+export const loader = styled.div`
+  padding: 1.5em 0;
+`;
+
+export const results_wrapper = styled.div`
+  padding: 1.5em 0;
 `;

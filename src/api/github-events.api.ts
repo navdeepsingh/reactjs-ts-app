@@ -19,7 +19,7 @@ export function mapResult(data: GithubEvent[]): GithubIssue[] {
     data = data.filter(result => result.type === 'IssueCommentEvent')
 
     //data.map(res => output.push(res.payload.issue.id))
-    // console.log(data);
+    console.log(data);
     // return (data);
     
     // TODO:

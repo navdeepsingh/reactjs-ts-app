@@ -5,8 +5,7 @@ import * as s from "../app.styles";
 //import {useGithubIssueComments} from "../api/github-events.api";
 import {useFormSubmit} from "./hooks/use-form-submit";
 import {useGithubIssueComments} from "../api/github-events.api";
-
-
+import ErrorDetails from "../components/error-details";
 
 const Form: React.FC = () => 
 {  
