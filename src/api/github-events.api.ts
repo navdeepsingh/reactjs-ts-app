@@ -3,10 +3,10 @@ import axios from "axios";
 import {useQuery} from "react-query";
 
 
-export function useGithubIssueComments(inputs: Object ) {
-    console.log(inputs);
+export function useGithubIssueComments( user: string, repo: string) {
+    //console.log(inputs);
     
-    const url = `https://api.github.com/repos/${inputs}/${inputs}/events?per_page=100`;
+    const url = `https://api.github.com/repos/${user}/${repo}/events?per_page=100`;
 
     return useQuery<GithubIssue[], Error>(url, () =>
         axios.get(url).then((res) => mapResult(res.data))

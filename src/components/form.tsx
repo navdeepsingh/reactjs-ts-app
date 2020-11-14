@@ -1,23 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from "./ui/button";
 import * as s from "../app.styles";
-import {useFormSubmit} from "./hooks/use-form-submit";
 import Results from "./results";
 
-const Form: React.FC = () => 
+type FormProps = {
+  customHandle: Function;
+};
+
+const Form: React.FC<FormProps> = ({customHandle}: FormProps ) => 
 {  
 
-  const [inputs, handleInputChange, handleSubmit] = useFormSubmit();
+  //const [inputs, handleSubmit] = useFormSubmit();
+  const [user, setUser] = useState('');
+  const [repo, setRepo] = useState('');
+
+ const handleSubmit = () => customHandle({user, repo});
+  
+  //console.log('Call to API ' + user+ ' ' + repo);
+    //useGithubIssueComments(user, repo);
+    //return;
+  
 
   return (
     <>
-      <s.form onSubmit={handleSubmit}>
+      <s.form>
         <div>
           <s.input 
             type="text"
             name="user"
             placeholder="user"
-            onChange={handleInputChange}
+            onChange={(e) => setUser(e.target.value)}
             required
           />
         </div>
@@ -27,16 +39,15 @@ const Form: React.FC = () =>
             type="text"
             name="repo"
             placeholder="repo"
+            onChange={(e) => setRepo(e.target.value)}
             required
-            onChange={handleInputChange}
           />
-        </div>
-        <Button 
-          type="submit"
-        >Go fetch</Button>
+        </div>        
       </s.form>
-
-      <Results inputs={inputs} />   
+      <Button 
+          type="button"
+          onClick={handleSubmit}
+        >Go fetch</Button>
     </>
   )
 };

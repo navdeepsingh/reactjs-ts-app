@@ -3,14 +3,15 @@ import * as s from "../app.styles";
 import ErrorDetails from "./error-details";
 import {useGithubIssueComments} from "../api/github-events.api";
 
-type ResultsProps = {
-  inputs: Object;
+type ResultsProps ={
+  user:string;
+  repo:string;
 };
 
 const Results: React.FC<ResultsProps> = ({
-  inputs
-}) => {
-  const { data, isLoading, isError, error } = useGithubIssueComments(inputs)
+  user, repo
+}:ResultsProps) => {
+  const { data, isLoading, isError, error } = useGithubIssueComments(user, repo);
 
   return(
     <>
@@ -20,7 +21,7 @@ const Results: React.FC<ResultsProps> = ({
       {
         isError && (<ErrorDetails error={error}/>)
       }
-      <s.results_wrapper>
+      
         {data?.map(issue => (
             <div key={issue.id}>
                 <s.issuer_title>{issue.title}</s.issuer_title>
@@ -34,7 +35,7 @@ const Results: React.FC<ResultsProps> = ({
                 )}
             </div>
         ))}
-      </s.results_wrapper>      
+      
     </>
   );
 }
