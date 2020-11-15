@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Button from "./ui/button";
 import * as s from "../app.styles";
-import Results from "./results";
 
 type FormProps = {
   customHandle: Function;
@@ -10,45 +9,36 @@ type FormProps = {
 const Form: React.FC<FormProps> = ({customHandle}: FormProps ) => 
 {  
 
-  //const [inputs, handleSubmit] = useFormSubmit();
-  const [user, setUser] = useState('');
-  const [repo, setRepo] = useState('');
+  const [user, setUser] = useState<string>('microsoft');
+  const [repo, setRepo] = useState<string>('Typescript');
 
- const handleSubmit = () => customHandle({user, repo});
-  
-  //console.log('Call to API ' + user+ ' ' + repo);
-    //useGithubIssueComments(user, repo);
-    //return;
-  
+  const handleSubmit = () => customHandle({user, repo});
 
   return (
     <>
-      <s.form>
-        
-          <s.input 
-            type="text"
-            name="user"
-            placeholder="user"
-            onChange={(e) => setUser(e.target.value)}
-            required
-          />
-        
-        <div>&#47;</div>
-        
-          <s.input 
-            type="text"
-            name="repo"
-            placeholder="repo"
-            onChange={(e) => setRepo(e.target.value)}
-            required
-          />
-        
+      <s.form>        
+        <s.input 
+          type="text"
+          name="user"
+          placeholder="user"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUser(e.target.value)}
+          value={user}
+          required
+        />        
+        <div>&#47;</div>        
+        <s.input
+          type="text"
+          name="repo"
+          placeholder="repo"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRepo(e.target.value)}
+          value={repo}
+          required
+        />        
         <Button 
           type="button"
           onClick={handleSubmit}
         >Go fetch</Button>      
-      </s.form>
-      
+      </s.form>      
     </>
   )
 };

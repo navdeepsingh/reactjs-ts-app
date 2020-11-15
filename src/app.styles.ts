@@ -65,6 +65,10 @@ export const comment_body = styled.div`
   border-radius: 10px;
   line-height: 1.6em;
   box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,0.05);
+
+  img {
+    width: 100%;
+  }
 `;
 
 export const form = styled.form`
