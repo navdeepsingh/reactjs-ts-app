@@ -4,7 +4,7 @@ import Form from "./components/form";
 import Results from "./components/results";
 
 function App() {
-    const [inputs, setInputs] = useState({user: '', repo: ''});
+    const [inputs, setInputs] = useState({user: 'microsoft', repo: 'Typescript'});
     console.log('App.js', inputs);
     
     return (  

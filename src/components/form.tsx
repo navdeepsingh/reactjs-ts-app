@@ -24,7 +24,7 @@ const Form: React.FC<FormProps> = ({customHandle}: FormProps ) =>
   return (
     <>
       <s.form>
-        <div>
+        
           <s.input 
             type="text"
             name="user"
@@ -32,9 +32,9 @@ const Form: React.FC<FormProps> = ({customHandle}: FormProps ) =>
             onChange={(e) => setUser(e.target.value)}
             required
           />
-        </div>
+        
         <div>&#47;</div>
-        <div>
+        
           <s.input 
             type="text"
             name="repo"
@@ -42,12 +42,13 @@ const Form: React.FC<FormProps> = ({customHandle}: FormProps ) =>
             onChange={(e) => setRepo(e.target.value)}
             required
           />
-        </div>        
-      </s.form>
-      <Button 
+        
+        <Button 
           type="button"
           onClick={handleSubmit}
-        >Go fetch</Button>
+        >Go fetch</Button>      
+      </s.form>
+      
     </>
   )
 };

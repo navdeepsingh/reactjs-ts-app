@@ -8,6 +8,11 @@ type ResultsProps ={
   repo:string;
 };
 
+const getDifferenceInHours = (date: string) => {
+  const diffInMs = Math.abs(new Date().getTime() - new Date(date).getTime());
+  return Math.floor(diffInMs / (1000 * 60 * 60));
+}
+
 const Results: React.FC<ResultsProps> = ({
   user, repo
 }:ResultsProps) => {
@@ -21,20 +26,21 @@ const Results: React.FC<ResultsProps> = ({
       {
         isError && (<ErrorDetails error={error}/>)
       }
-      
-        {data?.map(issue => (
-            <div key={issue.id}>
-                <s.issuer_title>{issue.title}</s.issuer_title>
-                <s.issuer_info>By {issue.user} &bull; {issue.created_at}</s.issuer_info>
-                <pre>{issue.body}</pre>
-                {issue.comments.map(comment =>
-                    <s.comment_body key={comment.id}>
-                        <div>{comment.created_at} {comment.user.login}:</div>
-                        <pre>{comment.body}</pre>
-                    </s.comment_body>
-                )}
-            </div>
-        ))}
+
+      {data?.map(issue => (
+          <s.issue_container key={issue.id}>
+              <s.issuer_title>{issue.title}</s.issuer_title>
+              <s.issuer_info>By <strong>{issue.user.login}</strong> &bull; {getDifferenceInHours(issue.created_at)} hours ago</s.issuer_info>                
+              <s.issuer_body>{issue.body}</s.issuer_body>
+              <s.comments_header>{issue.comments?.length} Comments</s.comments_header>
+              {issue.comments.map(comment =>
+                  <s.comment_body key={comment.id}>
+                      <div>By <strong>{comment.user.login}</strong> &bull; {getDifferenceInHours(comment.created_at)} hours ago</div>
+                      <div>{comment.body}</div>
+                  </s.comment_body>
+              )}
+          </s.issue_container>
+      ))}
       
     </>
   );
