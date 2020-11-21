@@ -1,25 +1,8 @@
-# Assignment
-
-This assignment should be considered time-slotted. You should try to get as far as possible within approximately three hours. 
-
-The assignment consists of the following tasks:
-1. Your TypeScript skills will be evaluated by your ability to transform one data structure into another
-2. Your UI skills are evaluated by your ability to turn a very rough web page into something that looks like the supplied comp
-
-The tasks has been designed to challenge even the most experienced frontend developer, and we do not expect anyone to produce 
-something 100% identical to the comp within the given timeframe.
-
-We do however expect you to be able to produce something that works and looks nice and polished.
-
-Your solution will be evaluated based on the quality of the produced code, as much as the finished result. 
-
-Aim towards producing production grade code, rather than maximising the amount of features.
-
 ## Tasks
 
 ### 1. Transforming the data
 
-Open `./src/api/github-events.api.ts` and complete the TODOs
+Open `./src/api/github-events.api.ts` and transform the result into required data structure.
 
 ### 2. Submitting data with a form
 
@@ -32,9 +15,6 @@ should be replaced by the value of the `user` field, and `TypeScript` should be 
 
 Open the comp at https://www.sketch.com/s/f40d714d-b01d-4bdd-8099-e89386416560 and start changing the code in `./src/app.tsx` to be as close as possible to the comp.
 
-Hints: 
-1. You can use the inspector in the comp, to view css properties
-2. You can format the markup in the body fields, by using the `react-markdown` module, which is available here: https://github.com/remarkjs/react-markdown
 
 # Available Scripts
 

@@ -1,4 +1,4 @@
-import {GithubEvent, GithubIssue} from "./github-events.model";
+import {GithubEvent, GithubComment, GithubIssue} from "./github-events.model";
 import axios from "axios";
 import {useQuery} from "react-query";
 
@@ -32,19 +32,28 @@ export function mapResult(data: GithubEvent[]): GithubIssue[] {
                 id: output.payload.issue.user.id,
                 login: output.payload.issue.user.login,
             },
-            comments: [
-                {
-                    id: output.payload.comment.id,
-                    created_at: output.payload.comment.created_at,
-                    body: output.payload.comment.body,
-                    user: {
-                        id: output.payload.comment.user.id,
-                        login: output.payload.comment.user.login
-                    }
-                }                
-            ]
+            comments: commentsData(output.payload.issue.id)            
         } as GithubIssue;
     };
+
+    const modifyCommentsData = (output: GithubEvent):GithubComment => {
+        return {            
+            id: output.payload.comment.id,
+            created_at: output.payload.comment.created_at,
+            body: output.payload.comment.body,
+            user: {
+                id: output.payload.comment.user.id,
+                login: output.payload.comment.user.login
+            }               
+        } as GithubComment;
+    };
+
+
+    const commentsData = (issueId: Number) => {
+        let filteredData = [];
+        filteredData = data.filter(issue => issue.payload.issue.id === issueId);
+        return filteredData.map(modifyCommentsData);
+    }
 
     results = data.map(modifyData);
 
